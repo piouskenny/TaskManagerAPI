@@ -8,6 +8,7 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use App\Services\UserControllerServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,10 +26,21 @@ class UserController extends Controller
 
         $this->UserControllerServices->signupService($request);
 
-        return response()->json("Post created");
+        return response()->json("User Account created");
     }
 
     public function login(LoginRequest $request)
     {
+        $user =  User::where('username', $request->username)->first();
+
+        if (!$user) {
+            return response()->json('No Account found for this username please signup');
+        }
+
+        if (Hash::check('request->password', $user->password)) {
+            return response()->json('Correct Password');
+        } else {
+            return response()->json('Incorrect Password');
+        }
     }
 }
