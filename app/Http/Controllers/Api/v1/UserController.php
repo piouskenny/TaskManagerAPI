@@ -35,6 +35,7 @@ class UserController extends Controller
 
     public function login(LoginRequest $request)
     {
+        $this->middleware('throttle:5,1')->only('login');
 
         $this->UserControllerServices = new UserControllerServices;
 
