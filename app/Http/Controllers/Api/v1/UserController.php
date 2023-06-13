@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
+use App\Models\User;
 use App\Services\UserControllerServices;
 
 class UserController extends Controller
@@ -13,8 +14,15 @@ class UserController extends Controller
 
     public function index()
     {
+        $id = 1;
+        $user = User::where('id', $id)->first();
         // Select all tasks with the userID
-        return response()->json("TASK MANAGER API");
+
+        if ($user->tasks->count() < 1) {
+            return response()->json("No task for this user");
+        }
+
+        return response()->json("These are all the task by the user");
     }
 
     public function signUp(SignupRequest $request)
