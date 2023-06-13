@@ -20,4 +20,21 @@ class UserControllerServices
             'password' => Hash::make($request->password),
         ]);
     }
+
+
+    public function loginServices($request)
+    {
+        $user =  User::where('username', $request->username)->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                $ouptout = response()->json("Welcome User $user->username");
+            } else {
+                $ouptout = response()->json('Incorrect Password');
+            }
+        } else {
+            $ouptout = response()->json('No Account found for this username please signup');
+        }
+
+        return $ouptout;
+    }
 }

@@ -31,16 +31,11 @@ class UserController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user =  User::where('username', $request->username)->first();
 
-        if (!$user) {
-            return response()->json('No Account found for this username please signup');
-        }
+        $this->UserControllerServices = new UserControllerServices;
 
-        if (Hash::check('request->password', $user->password)) {
-            return response()->json('Correct Password');
-        } else {
-            return response()->json('Incorrect Password');
-        }
+        $output = $this->UserControllerServices->loginServices($request);
+
+        return $output;
     }
 }
