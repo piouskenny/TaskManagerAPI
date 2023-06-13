@@ -17,12 +17,11 @@ class UserController extends Controller
         $id = 1;
         $user = User::where('id', $id)->first();
         // Select all tasks with the userID
-
         if ($user->tasks->count() < 1) {
             return response()->json("No task for this user");
         }
-
-        return response()->json("These are all the task by the user");
+        $output = $user->tasks->pluck('task');
+        return response()->json($output);
     }
 
     public function signUp(SignupRequest $request)
