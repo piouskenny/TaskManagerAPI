@@ -11,7 +11,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'username' => 'string|required',
+            'email' => 'email|unique:users',
+            'password' => 'string|min:8'
         ];
     }
 }
