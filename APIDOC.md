@@ -20,3 +20,8 @@
 "username" : "username",
 "password" : "Userpassword"
 }
+
+# http://localhost:8000/api/v1/task/create -> to create New Task
+
+The User Id will  be gotten Authomatically if the user is Logged in
+
