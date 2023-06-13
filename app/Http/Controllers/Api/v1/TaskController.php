@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -13,7 +14,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'task' => 'string | required | min:3 |max:255'
+        ]);
+
+        $userid = 1;
+
+        Task::create([
+            'user_id' => $userid,
+            'task' => $request->task,
+        ]);
+
+        return response()->json('Task Added Succesfully');
     }
 
     /**
