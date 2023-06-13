@@ -23,8 +23,8 @@ class SignupRequest extends FormRequest
     {
         return [
             'username' => 'string|required',
-            'email' => 'email|unique:users',
-            'password' => 'string|min:8'
+            'email' => 'email|unique:users|required',
+            'password' => 'string|min:8|required'
         ];
     }
 }

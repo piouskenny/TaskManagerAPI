@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
 use App\Models\User;
+use App\Services\UserControllerServices;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(User $user)
+    public function index()
     {
         // Select all tasks with the userID
-
+        return response()->json("TASK MANAGER API");
     }
 
     public function signUp(SignupRequest $request)
@@ -25,4 +26,7 @@ class UserController extends Controller
 
         return response()->json("Post created");
     }
+
+
+    
 }
