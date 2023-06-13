@@ -32,7 +32,7 @@ class TaskController extends Controller
     {
         $singleTask = Task::where('id', $id)->pluck('task');
 
-        return response()->json('$singleTask');
+        return response()->json($singleTask);
     }
 
     /**
@@ -43,6 +43,8 @@ class TaskController extends Controller
         Task::where('id', $id)->update([
             'task' => $request->task
         ]);
+
+        return response()->json('Task Updated Successfully');
     }
 
     /**
