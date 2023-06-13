@@ -28,20 +28,11 @@ class TaskController extends Controller
         return response()->json('Task Added Succesfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $singleTask = Task::where('id', $id)->pluck('task');
+
+        return response()->json('$singleTask');
     }
 
     /**
@@ -49,7 +40,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Task::where('id', $id)->update([
+            'task' => $request->task
+        ]);
     }
 
     /**
