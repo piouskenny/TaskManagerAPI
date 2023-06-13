@@ -21,6 +21,6 @@ Route::prefix('v1')->group(function () {
     Route::post('/signup', [UserController::class, 'signup']);
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/task/create', [TaskController::class, 'store']);
-    Route::get('/task/show/{id}', [TaskController::class, 'edit']);
-    Route::post('/task/edit/{id}', [TaskController::class, 'update']);
+    Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
+    Route::post('/task/update/{id}', [TaskController::class, 'update']);
 });

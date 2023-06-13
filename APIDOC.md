@@ -32,4 +32,3 @@ Please note that you'll have to pass the ID of the intented task to the back of 
 # http://localhost:8000/api/v1/task/update/ -> The post request to update the selected task
 
 Please note that you'll have to pass the ID of the intented task to the back of the endpoint like this http://localhost:8000/api/v1/task/edit/1
-
