@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('v1')->group(function () {
+    Route::get('/task', [TaskController::class, 'index']);
     Route::post('/task/create', [TaskController::class, 'store']);
     Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
     Route::post('/task/update/{id}', [TaskController::class, 'update']);

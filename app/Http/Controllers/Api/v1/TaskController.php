@@ -11,8 +11,12 @@ class TaskController extends Controller
 
     public function index()
     {
-        $all_task = Task::all();
-        return response()->json('$all_task');
+        $all_task = Task::all()->pluck('task');
+
+        if ($all_task->count() < 1) {
+            return response()->json('No Task Added');
+        }
+        return response()->json($all_task);
     }
 
     /**
