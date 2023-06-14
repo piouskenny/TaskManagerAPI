@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
 
+    public function index()
+    {
+        $all_task = Task::all();
+        return response()->json('$all_task');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -18,10 +24,8 @@ class TaskController extends Controller
             'task' => 'string | required | min:3 |max:255'
         ]);
 
-        $userid = 1;
 
         Task::create([
-            'user_id' => $userid,
             'task' => $request->task,
         ]);
 
